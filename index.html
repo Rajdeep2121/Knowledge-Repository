@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Knowledge Repository</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" id="sitehead" class="navbar-brand">Knowledge Repository</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNav">
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a color="white" href="index.html">Home</a></li>
+                    <li><a color="white" href="login-profile/login.html">Login | Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="headercontainer">
+        <h1>KNOWLEDGE REPOSITORY</h1>
+    </div>
+
+    <div class="searchcontainer">
+        <form>
+            <input type="text" name="searchbar" id="searchbar" placeholder="Search Articles">
+            <br><br>
+            <button type="submit">Submit <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        </form>
+    </div>
+
+    <div class="listArticles"></div>
+</body>
+</html>
