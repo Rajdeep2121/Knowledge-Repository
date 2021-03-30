@@ -10,7 +10,9 @@ $result = mysqli_query($con,$s);
 $num = mysqli_num_rows($result);
 if($num==1){
     $row = mysqli_fetch_array($result);
+    $_SESSION['email']=$row['email'];
     $_SESSION['name']=$row['name'];
+    $_SESSION['role']=$row['role'];
     $_SESSION['logged_in']=true;
     header('location:profile.php');
 }

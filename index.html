@@ -8,8 +8,66 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Knowledge Repository</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+    <style>
+body{
+    /* background-color: black; */
+    /* color: white; */
+    font-family: GothamBold;
+}
+h1{
+    padding: 20px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: GothamBold;
+}
+
+@font-face {
+    font-family: GothamBold;
+    src: url(fonts/Gotham-Font/Gotham-Bold.otf);
+}
+
+.headercontainer{
+    /* background: -webkit-linear-gradient(360deg,#224e4d 10%,#083023 360%);  */
+    /* background: linear-gradient(360deg,#224e4d 10%,#083023 360%); */
+    background: #C04848;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #480048, #C04848);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #480048, #C04848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 0 0 50% 50%;
+    color: whitesmoke;
+    margin-top: -20px;
+    width: 100%;
+    height: 300px;
+    padding: 1px;
+    margin-bottom: 5x;
+}
+
+input[type="text"]{
+    padding: 5px;
+    width: 50%;
+    color: black;
+}
+
+.searchcontainer{
+    text-align: center;
+}
+
+button[type="submit"]{
+    /* margin-bottom: 20px; */
+    border-radius: 0;
+    width: 100px;
+    border: 1px solid black;
+    background-color: black;
+    padding: 10px;
+    color: white;
+}
+button[type="submit"]:hover{
+    background-color: white;
+    border: 1px solid white;
+    color: black;
+    transition: 0.4s ease-out;
+}
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -34,15 +92,16 @@
 
     <div class="headercontainer">
         <h1>KNOWLEDGE REPOSITORY</h1>
+        <br><br>
+        <div class="searchcontainer">
+            <form action="search/search.php" method="GET">
+                <input type="text" name="searchbar" id="searchbar" placeholder="Search Articles">
+                <br><br>
+                <button type="submit">Search <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </form>
+        </div>
     </div>
-
-    <div class="searchcontainer">
-        <form>
-            <input type="text" name="searchbar" id="searchbar" placeholder="Search Articles">
-            <br><br>
-            <button type="submit">Submit <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-        </form>
-    </div>
+    
 
     <div class="listArticles"></div>
 </body>
