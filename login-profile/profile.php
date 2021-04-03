@@ -76,7 +76,7 @@ h1{
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="index.html" id="sitehead" class="navbar-brand">Knowledge Repository</a>
+                <a href="../index.php" id="sitehead" class="navbar-brand">Knowledge Repository</a>
             </div>
             <div class="collapse navbar-collapse" id="myNav">
                 

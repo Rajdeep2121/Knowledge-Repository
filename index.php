@@ -10,9 +10,8 @@
     <title>Knowledge Repository</title>
     <style>
 body{
-    /* background-color: black; */
-    /* color: white; */
     font-family: GothamBold;
+    background-color:lightgrey;
 }
 h1{
     padding: 20px;
@@ -28,12 +27,10 @@ h1{
 }
 
 .headercontainer{
-    /* background: -webkit-linear-gradient(360deg,#224e4d 10%,#083023 360%);  */
-    /* background: linear-gradient(360deg,#224e4d 10%,#083023 360%); */
-    background: #C04848;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #480048, #C04848);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #480048, #C04848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-radius: 0 0 50% 50%;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 0 0 20% 20%;
     color: whitesmoke;
     margin-top: -20px;
     width: 100%;
@@ -67,6 +64,19 @@ button[type="submit"]:hover{
     color: black;
     transition: 0.4s ease-out;
 }
+#article-card{
+    text-align: center; 
+    /* padding: 10px; */
+    border: 1px solid black;
+}
+#article-card:hover{
+    cursor: pointer;
+    border: 1px solid black;
+    box-shadow: 10px black;
+}
+img{
+    padding-top: 12px;
+}
     </style>
 </head>
 <body>
@@ -78,12 +88,12 @@ button[type="submit"]:hover{
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="index.html" id="sitehead" class="navbar-brand">Knowledge Repository</a>
+                <a href="index.php" id="sitehead" class="navbar-brand">Knowledge Repository</a>
             </div>
             <div class="collapse navbar-collapse" id="myNav">
                 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a color="white" href="index.html">Home</a></li>
+                    <li><a color="white" href="index.php">Home</a></li>
                     <li><a color="white" href="login-profile/login.html">Login | Register</a></li>
                 </ul>
             </div>
@@ -94,15 +104,54 @@ button[type="submit"]:hover{
         <h1>KNOWLEDGE REPOSITORY</h1>
         <br><br>
         <div class="searchcontainer">
-            <form action="search/search.php" method="GET">
+            <!-- <form action="search/search.php" method="POST">
                 <input type="text" name="searchbar" id="searchbar" placeholder="Search Articles">
                 <br><br>
                 <button type="submit">Search <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-            </form>
+            </form> -->
+            <input type="text" placeholder="Search Article" id="searchbar">
+            <button type="submit" onclick="onClick()">Search <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         </div>
     </div>
     
+    <div class="listArticles">
+        <div class="article-heading"><h3><b>Articles  <i class="fa fa-list-alt" aria-hidden="true"></i></b></h3></div>
+<?php
 
-    <div class="listArticles"></div>
+$con = mysqli_connect('localhost','root','');
+mysqli_select_db($con,'userprofiles');
+
+$sql = "select * from articles";
+$records = mysqli_query($con, $sql);
+if($records==''){
+    echo "No Articles to show!!";
+}
+else{
+    while($row = mysqli_fetch_array($records)){
+        $temp = $row['id'];
+        $link = "articleDisplay.php?articleID=".$temp; 
+        echo "<div class='col-md-4' id='article-card' onclick=\"window.location.href='$link'\">";
+        echo "<div class='row'>";
+        echo "<div class='col-md-8'><h2>".$row['name']."</h2>";
+        $subString=$row['description'];
+        $subString=substr($subString, 0, 150);
+        echo "<p style='text-align: left; font-family: Arial; font-size: 15px'>".$subString."...</p></div>";
+        echo "<div class='col-md-4'><img src=".$row['image']." width='100' height='auto'></div>";
+        echo "</div>";
+        echo "</div>";
+    }
+}
+
+?>
+    </div>
+
+
+
+<script>
+function onClick(){
+    var searchQuery = document.getElementById("searchbar");
+    console.log(searchQuery.innerHTML);
+}
+</script>
 </body>
 </html>
