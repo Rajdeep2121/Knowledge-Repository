@@ -14,7 +14,7 @@ if($num==1){
     $_SESSION['name']=$row['name'];
     $_SESSION['role']=$row['role'];
     $_SESSION['logged_in']=true;
-    header('location:profile.php');
+    header('location:../profile/profile.php');
 }
 else{
 echo "<h3 style='font-family:Segoe UI;'>Login Error</h3>";

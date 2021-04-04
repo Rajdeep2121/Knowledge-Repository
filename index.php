@@ -11,7 +11,7 @@
     <style>
 body{
     font-family: GothamBold;
-    background-color:lightgrey;
+    /* background-color:lightgrey; */
 }
 h1{
     padding: 20px;
@@ -27,16 +27,18 @@ h1{
 }
 
 .headercontainer{
-    background: #0F2027;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-radius: 0 0 20% 20%;
+    background-image: url(images/2964941.jpg);
+    background-position: right bottom;
+    /* background: #0F2027;  
+    background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027); 
+    background: linear-gradient(to top, #2C5364, #203A43, #0F2027); */
+    border-radius: 0 0 320px 320px;
     color: whitesmoke;
     margin-top: -20px;
     width: 100%;
     height: 300px;
     padding: 1px;
-    margin-bottom: 5x;
+    margin-bottom: 100px;
 }
 
 input[type="text"]{
@@ -50,7 +52,6 @@ input[type="text"]{
 }
 
 button[type="submit"]{
-    /* margin-bottom: 20px; */
     border-radius: 0;
     width: 100px;
     border: 1px solid black;
@@ -67,15 +68,21 @@ button[type="submit"]:hover{
 #article-card{
     text-align: center; 
     /* padding: 10px; */
-    border: 1px solid black;
+    border: 1px solid lightgrey;
+    transition: 1s ease-out;
+    margin-bottom: 20px;
+    justify-content: space-around;
 }
 #article-card:hover{
     cursor: pointer;
-    border: 1px solid black;
-    box-shadow: 10px black;
+    color: white;
+    background-image: url(images/a.jpg);
 }
 img{
     padding-top: 12px;
+}
+.article-container{
+    margin-bottom: 40px;
 }
     </style>
 </head>
@@ -114,14 +121,15 @@ img{
         </div>
     </div>
     
-    <div class="listArticles">
-        <div class="article-heading"><h3><b>Articles  <i class="fa fa-list-alt" aria-hidden="true"></i></b></h3></div>
+
+    <div class="article-container">
+        <div class="article-heading"><h3 style='text-align: center;'><b>ARTICLES  <i class="fa fa-list-alt" aria-hidden="true"></i></b></h3></div><br><br>
 <?php
 
 $con = mysqli_connect('localhost','root','');
 mysqli_select_db($con,'userprofiles');
 
-$sql = "select * from articles";
+$sql = "select * from articles where approved=1";
 $records = mysqli_query($con, $sql);
 if($records==''){
     echo "No Articles to show!!";
@@ -132,7 +140,7 @@ else{
         $link = "articleDisplay.php?articleID=".$temp; 
         echo "<div class='col-md-4' id='article-card' onclick=\"window.location.href='$link'\">";
         echo "<div class='row'>";
-        echo "<div class='col-md-8'><h2>".$row['name']."</h2>";
+        echo "<div class='col-md-8'><h3>".$row['name']."</h3>";
         $subString=$row['description'];
         $subString=substr($subString, 0, 150);
         echo "<p style='text-align: left; font-family: Arial; font-size: 15px'>".$subString."...</p></div>";
@@ -144,8 +152,6 @@ else{
 
 ?>
     </div>
-
-
 
 <script>
 function onClick(){
