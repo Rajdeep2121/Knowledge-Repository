@@ -61,6 +61,10 @@ img{
                     <?php
                         if($_SESSION['role']=='contributor'){
                             echo "<li><a href='../login-profile/domExpert.php'>Apply for Domain Expert</a></li>";
+                            echo "<li><a href='newArticle.php'>New Article</a></li>";
+                        }
+                        elseif($_SESSION['role']=='domain expert'){
+                            echo "<li><a href='removeArticle.php'>Delete Article</a></li>";
                         }
                     ?>
                 </ul>
