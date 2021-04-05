@@ -40,6 +40,11 @@ img{
 #approvebtn, #approvebtn{
     margin: 10px;
 }
+#editArt, #readArt{
+    margin: 2px;
+    width: 40%;
+    /* margin-bottom: 10px;  */
+}
     </style>
     </head>
     <body>
@@ -57,7 +62,6 @@ img{
                 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a color="white" href="profile.php">Welcome <?php echo $_SESSION['name']; ?></a></li>
-                    <li><a href="../login-profile/logout.php">Logout</a></li>
                     <?php
                         if($_SESSION['role']=='contributor'){
                             echo "<li><a href='../login-profile/domExpert.php'>Apply for Domain Expert</a></li>";
@@ -66,7 +70,8 @@ img{
                         elseif($_SESSION['role']=='domain expert'){
                             echo "<li><a href='removeArticle.php'>Delete Article</a></li>";
                         }
-                    ?>
+                        ?>
+                    <li><a href="../login-profile/logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -95,7 +100,8 @@ if($_SESSION['role']=='domain expert'){
             $subString=substr($subString, 0, 150);
             echo "<p style='text-align: left; font-family: Arial; font-size: 15px'>".$subString."...</p>";
             echo "<button class='btn btn-primary' id='read' onclick=\"window.location.href='$link'\" >Read</button>";
-            echo "<button class='btn btn-success' id='approvebtn' onclick=\"window.location.href='approveArticle.php?articleID=$temp'\" >Approve</button></div>";
+            echo "<button class='btn btn-success' id='approvebtn' onclick=\"window.location.href='approveArticle.php?articleID=$temp'\" >Approve</button>";
+            echo "<button class='btn btn-danger' id='disapprovebtn' onclick=\"window.location.href='disapproveArticle.php?articleID=$temp'\" >Disapprove</button></div>";
             echo "<div class='col-md-4'><img src=".$row['image']." width='100' height='auto'></div>";
             echo "</div>";
             echo "</div>";
@@ -110,12 +116,15 @@ elseif($_SESSION['role']=='contributor'){
     while($row = mysqli_fetch_array($records)){
         $temp = $row['id'];
         $link = "../articleDisplay.php?articleID=".$temp; 
-        echo "<div class='col-md-4' id='article-card' onclick=\"window.location.href='$link'\">";
+        echo "<div class='col-md-4' id='article-card'>";
         echo "<div class='row'>";
         echo "<div class='col-md-8'><h3>".$row['name']."</h3>";
         $subString=$row['description'];
         $subString=substr($subString, 0, 150);
-        echo "<p style='text-align: left; font-family: Arial; font-size: 15px'>".$subString."...</p></div>";
+        echo "<p style='text-align: left; font-family: Arial; font-size: 15px'>".$subString."...</p>"; //</div>";
+        $editLink = 'editArticle.php?articleID='.$temp;
+        echo "<button id='readArt' class='btn btn-primary' onclick=\"window.location.href='$link'\">Read</button>";
+        echo "<button id='editArt' class='btn btn-warning' onclick=\"window.location.href='$editLink'\">Edit</button></div>";
         echo "<div class='col-md-4'><img src=".$row['image']." width='100' height='auto'></div>";
         echo "</div>";
         echo "</div>";

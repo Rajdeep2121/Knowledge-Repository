@@ -32,7 +32,7 @@ h1{
     /* background: #0F2027;  
     background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027); 
     background: linear-gradient(to top, #2C5364, #203A43, #0F2027); */
-    border-radius: 0 0 320px 320px;
+    /* border-radius: 0 0 320px 320px; */
     color: whitesmoke;
     margin-top: -20px;
     width: 100%;

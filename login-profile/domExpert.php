@@ -17,10 +17,10 @@ if($num==1){
     $_SESSION['role']=$role;
     $s1 = "update profiles set role='$role' where email='$email'";
     $result1 = mysqli_query($con, $s1);  
-    header('location:profile.php');
+    header('location:../profile/profile.php');
 }
 else{
 echo "<h3 style='font-family:Segoe UI;'>Login Error</h3>";
-echo "<script>setTimeout(\"location.href = 'profile.php';\",1500);</script>";
+echo "<script>setTimeout(\"location.href = '../profile/profile.php';\",1500);</script>";
 }
 ?>
