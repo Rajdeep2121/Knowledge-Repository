@@ -1,8 +1,7 @@
 <?php
 session_start();
-// header('location:login.php');
 $con = mysqli_connect('localhost','root','');
-// create db if it doesnt exist
+
 $createdb = "create database userprofiles";
 if($con->query($createdb) === TRUE){
     echo "";
@@ -13,7 +12,6 @@ else{
 
 mysqli_select_db($con,'userprofiles');
 
-// create table if it doesnt exist
 $create = "create table profiles(name varchar(255),password varchar(255),email varchar(255),role varchar(255), PRIMARY KEY(email))";
 if(mysqli_query($con, $create)){
     echo "";

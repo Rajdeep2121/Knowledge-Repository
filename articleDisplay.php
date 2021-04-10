@@ -10,17 +10,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body{
-    background: #3A1C71;  
-    background: -webkit-linear-gradient(to left, #FFAF7B, #D76D77, #3A1C71);  
-    background: linear-gradient(to left, #FFAF7B, #D76D77, #3A1C71);
+    background: #44A08D;  
+    background: -webkit-linear-gradient(to right, #093637, #44A08D); 
+    background: linear-gradient(to right, #093637, #44A08D); 
     font-family: GothamBold;
+}
+p{
+    font-family: Sans-serif;
 }
 .box{
     background-color: lightgrey;
     border-radius: 10px;
     width: 100%;
     padding: 10px;
-    box-shadow: 5px 10px 8px #D76D77;
+    box-shadow: 5px 10px 8px #093637;
 }
 @font-face {
     font-family: GothamBold;
@@ -33,14 +36,34 @@ body{
 </style>
 </head>
 <body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.php" id="sitehead" class="navbar-brand">Knowledge Repository</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNav">
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a color="white" href="index.php">Home</a></li>
+                    <li><a color="white" href="login-profile/login.html">Login | Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 <?php
 $link = $_SERVER['HTTP_HOST'];
 $link = $_SERVER['REQUEST_URI'];
-// echo $link;
+
 $url_components = parse_url($link);
 parse_str($url_components['query'], $params);
 $id = $params['articleID'];
-// echo $id;
 
 $con = mysqli_connect('localhost','root','');
 mysqli_select_db($con,'userprofiles');
@@ -68,7 +91,7 @@ else{
                 <p><?php echo $description; ?></p>
             </div>
             <div class="col-md-4">
-                <img class="art-name" src="<?php echo $image; ?>">
+                <img class="art-name" src="<?php echo $image; ?>" width="340">
             </div>
         </div>
     </div>

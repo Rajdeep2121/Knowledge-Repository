@@ -3,8 +3,6 @@ session_start();
 $con = mysqli_connect('localhost','root','');
 mysqli_select_db($con,'userprofiles');
 
-
-// CREATING TABLE IF NOT EXISTS
 $create = "create table articles(id int NOT NULL, name varchar(255), image mediumtext, description longtext, approved int, PRIMARY KEY (id)";
 if(mysqli_query($con, $create)){
     echo "";

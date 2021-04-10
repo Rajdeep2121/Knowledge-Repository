@@ -11,12 +11,11 @@
     <style>
 body{
     font-family: GothamBold;
-    /* background-color:lightgrey; */
 }
 h1{
     padding: 20px;
     text-align: center;
-    font-size: 50px;
+    font-size: 70px;
     font-weight: bold;
     font-family: GothamBold;
 }
@@ -27,23 +26,26 @@ h1{
 }
 
 .headercontainer{
-    background-image: url(images/2964941.jpg);
-    background-position: right bottom;
-    /* background: #0F2027;  
-    background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027); 
-    background: linear-gradient(to top, #2C5364, #203A43, #0F2027); */
-    /* border-radius: 0 0 320px 320px; */
+    background-image: url(images/jonathan-adams-0m-cPyH_WDU-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 20em 5em #000;
+
+    background-position: center ;
     color: whitesmoke;
     margin-top: -20px;
     width: 100%;
-    height: 300px;
-    padding: 1px;
-    margin-bottom: 100px;
+    height: 500px;
+    padding: 30px;
+    margin-bottom: 50px;
 }
 
 input[type="text"]{
-    padding: 5px;
+    padding: 15px;
+    height: 50px;
+    border-radius: 5px;
     width: 50%;
+    border: none;
     color: black;
 }
 
@@ -54,8 +56,9 @@ input[type="text"]{
 button[type="submit"]{
     border-radius: 0;
     width: 100px;
-    border: 1px solid black;
-    background-color: black;
+    border: 1px solid #4c8bf5;
+    border-radius: 15px;
+    background-color: #4c8bf5;
     padding: 10px;
     color: white;
 }
@@ -67,22 +70,23 @@ button[type="submit"]:hover{
 }
 #article-card{
     text-align: center; 
-    /* padding: 10px; */
     border: 1px solid lightgrey;
-    transition: 1s ease-out;
+    transition: 0.5s ease-out;
     margin-bottom: 20px;
     justify-content: space-around;
 }
 #article-card:hover{
     cursor: pointer;
     color: white;
-    background-image: url(images/a.jpg);
+    background-color: #15202b;
 }
 img{
     padding-top: 12px;
 }
 .article-container{
     margin-bottom: 40px;
+    width: 80%;
+    margin: 0 10%;
 }
     </style>
 </head>
@@ -108,22 +112,17 @@ img{
     </nav>
 
     <div class="headercontainer">
-        <h1>KNOWLEDGE REPOSITORY</h1>
+        <h1 style='font-family: GothamBold; font-size: 70px;color: white'>Knowledge Repository</h1>
         <br><br>
         <div class="searchcontainer">
-            <!-- <form action="search/search.php" method="POST">
-                <input type="text" name="searchbar" id="searchbar" placeholder="Search Articles">
-                <br><br>
-                <button type="submit">Search <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-            </form> -->
-            <input type="text" placeholder="Search Article" id="searchbar">
-            <button type="submit" onclick="onClick()">Search <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            <input type="text" placeholder="Search Article" id="searchbar"><br><br>
+            <button type="submit" onclick="searchQuery()" id="searchBtn">Search <i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
     </div>
     
 
     <div class="article-container">
-        <div class="article-heading"><h3 style='text-align: center;'><b>ARTICLES  <i class="fa fa-list-alt" aria-hidden="true"></i></b></h3></div><br><br>
+        <div class="article-heading"><h3 style='text-align: center;padding-bottom: 10px;'><b>Start Reading...</b></h3></div>
 <?php
 
 $con = mysqli_connect('localhost','root','');
@@ -152,12 +151,20 @@ else{
 
 ?>
     </div>
-
 <script>
-function onClick(){
-    var searchQuery = document.getElementById("searchbar");
-    console.log(searchQuery.innerHTML);
+var input=document.getElementById("searchbar");
+input.addEventListener("keyup", function(event) {
+    if(event.keyCode===13){
+        event.preventDefault();
+        document.getElementById("searchBtn").click();
+    }
+});
+function searchQuery() {
+    var query=document.getElementById("searchbar").value;
+    var searchLink = "search/search.php?q="+query;
+    window.location.href=searchLink;
 }
+
 </script>
 </body>
 </html>

@@ -20,7 +20,6 @@ body{
 }
 #article-card{
     text-align: center; 
-    /* padding: 10px; */
     border: 1px solid lightgrey;
     transition: 0.5s ease-out;
     margin-bottom: 20px;
@@ -28,8 +27,7 @@ body{
 #article-card:hover{
     cursor: pointer;
     color: white;
-    background-color: teal;
-    /* background-image: url(../images/a.jpg); */
+    background-color: #15202b;
 }
 img{
     padding-top: 12px;
@@ -43,7 +41,6 @@ img{
 #editArt, #readArt{
     margin: 2px;
     width: 40%;
-    /* margin-bottom: 10px;  */
 }
     </style>
     </head>
@@ -83,7 +80,7 @@ $con = mysqli_connect('localhost','root','');
 mysqli_select_db($con,'userprofiles');
 
 if($_SESSION['role']=='domain expert'){
-    echo "<h2 class='page-header'>Articles To Be Approved!</h2>";
+    echo "<h2 class='page-header' style='text-align: center; background-color: whitesmoke; padding: 10px;'>Articles To Be Approved! <i class='fa fa-check-circle-o' aria-hidden='true'></i></h2>";
     $sql = "select * from articles where approved=0";
     $records = mysqli_query($con, $sql);
     if($records==''){
@@ -109,8 +106,7 @@ if($_SESSION['role']=='domain expert'){
     }
 }
 elseif($_SESSION['role']=='contributor'){
-    // echo 2;
-    echo "<h2 style='text-align: center'> Articles to Read <i class='fa fa-list-alt' aria-hidden='true'></i></h2><br><br>";
+    echo "<h2 style='text-align: center; background-color: whitesmoke; padding: 10px;'> Articles to Read <i class='fa fa-list-alt' aria-hidden='true'></i></h2><br><br>";
     $sql = "select * from articles where approved=1";
     $records = mysqli_query($con, $sql);
     while($row = mysqli_fetch_array($records)){

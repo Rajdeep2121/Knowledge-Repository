@@ -22,15 +22,12 @@ button{
     margin: 20px 20px 20px 0px;
 }
 body{
-    /* background-color: black;  */
     background: linear-gradient(to right, #F8CDDA, #1D2B64); 
 }
 .box{
     border: 1px solid white;
     border-radius: 10px;
-    /* margin-left: 300px; */
     padding: 30px;
-    /* width: 700px; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
 }
@@ -72,7 +69,6 @@ $link = $_SERVER['REQUEST_URI'];
 $url_components = parse_url($link);
 parse_str($url_components['query'], $params);
 $id = $params['articleID'];
-// echo $id;
 
 $con = mysqli_connect('localhost','root','');
 mysqli_select_db($con,'userprofiles');
@@ -100,13 +96,13 @@ $_SESSION['edit_artimg']=$image;
             <form action="editArticleDatabase.php" method="post">
                 <h2 style='text-align: center'>Edit Article</h2>
                 
-                <h4>Name:</h4>
+                <!-- <h4>Name:</h4>
                 <p style='color: #4C8BF5'><?php echo $name; ?></p>
                 
                 <h4>Original Content:</h4>
                 <p style='color: #4C8BF5'><?php echo $description; ?></p>
                 
-                <br><br>
+                <br><br> -->
 
                 <h4>Name:</h4>
                 <input type='text' name="artname" class="form-control" placeholder="<?php echo $name; ?>" readonly>
@@ -115,7 +111,7 @@ $_SESSION['edit_artimg']=$image;
                 <input type='text' name="artid" class="form-control" placeholder="<?php echo $id; ?>" readonly>
 
                 <h4>New Content:</h4>
-                <textarea name="artdesc" rows="10" class="form-control"></textarea>
+                <textarea name="artdesc" rows="40" class="form-control" style='color: red'><?php echo $description; ?></textarea>
                 
                 <button class="btn btn-danger" type="submit">Submit</button>
             </form>

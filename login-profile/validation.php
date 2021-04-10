@@ -17,7 +17,7 @@ if($num==1){
     header('location:../profile/profile.php');
 }
 else{
-echo "<h3 style='font-family:Segoe UI;'>Login Error</h3>";
+echo "<h1 style='font-family: Segoe UI'>Login Error</h1>";
 echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
 }
 ?>
