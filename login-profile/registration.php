@@ -32,8 +32,18 @@ if($num==1){
     echo "<h3 style='font-family:Segoe UI;'>Email already exists</h3>";
     echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
 }
-elseif ($name=='' or $pass=='' or $email=='') {
-    echo "<h3 style='font-family:Segoe UI;'>Enter valid email, name, password!!</h3>";
+elseif ($name=='') {
+    echo "<h3 style='font-family:Segoe UI;'>Cannot create user without name!!</h3>";
+    // echo "alert('Enter valid email, name, password!!')";
+    echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
+}
+elseif ($email=='') {
+    echo "<h3 style='font-family:Segoe UI;'>Cannot create user without Email ID!!</h3>";
+    // echo "alert('Enter valid email, name, password!!')";
+    echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
+}
+elseif ($pass=='') {
+    echo "<h3 style='font-family:Segoe UI;'>Cannot create user without password!!</h3>";
     // echo "alert('Enter valid email, name, password!!')";
     echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
 }

@@ -16,8 +16,16 @@ if($num==1){
     $_SESSION['logged_in']=true;
     header('location:../profile/profile.php');
 }
+elseif ($email==''){
+    echo "<h3 style='font-family: Segoe UI'>Enter valid email!!</h3>";
+    echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
+}
+elseif ($pass==''){
+    echo "<h3 style='font-family: Segoe UI'>Enter valid password!!</h3>";
+    echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
+}
 else{
-echo "<h1 style='font-family: Segoe UI'>Login Error</h1>";
-echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
+    echo "<h3 style='font-family: Segoe UI'>Login Error</h3>";
+    echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
 }
 ?>
