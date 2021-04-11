@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +21,14 @@ p{
     font-family: Sans-serif;
 }
 .box{
+    margin-bottom: 30px;
     background-color: lightgrey;
     border-radius: 10px;
     width: 100%;
     padding: 10px;
     box-shadow: 5px 10px 8px #093637;
 }
+
 @font-face {
     font-family: GothamBold;
     src: url(fonts/Gotham-Font/Gotham-Bold.otf);
@@ -33,6 +37,7 @@ p{
 .art-name{
     padding-bottom: 30px;
 }
+
 </style>
 </head>
 <body>
@@ -50,8 +55,16 @@ p{
             <div class="collapse navbar-collapse" id="myNav">
                 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a color="white" href="index.php">Home</a></li>
-                    <li><a color="white" href="login-profile/login.html">Login | Register</a></li>
+                    <?php 
+                        if (empty($_SESSION['role'])){
+                            echo "<li><a color='white' href='index.php'>Home</a></li>";
+                            echo "<li><a color='white' href='login-profile/login.html'>Login | Register</a></li>";
+                        }
+                        elseif ($_SESSION['role']=='domain expert' || $_SESSION['role']=='contributor'){
+                            echo "<li><a color='white' href='profile/profile.php'>Home</a></li>";
+                            echo "<li><a href='login-profile/logout.php'>Logout</a></li>";
+                        } 
+                    ?>
                 </ul>
             </div>
         </div>

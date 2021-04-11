@@ -12,7 +12,7 @@ else{
 
 mysqli_select_db($con,'userprofiles');
 
-$create = "create table profiles(name varchar(255),password varchar(255),email varchar(255),role varchar(255), PRIMARY KEY(email))";
+$create = "create table profiles(name varchar(255) NOT NULL,password varchar(255) NOT NULL,email varchar(255) NOT NULL,role varchar(255), PRIMARY KEY(email))";
 if(mysqli_query($con, $create)){
     echo "";
 }
@@ -32,11 +32,23 @@ if($num==1){
     echo "<h3 style='font-family:Segoe UI;'>Email already exists</h3>";
     echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
 }
-else{
-    $reg = "insert into profiles(name, password, email, role) values ('$name','$pass','$email','$role')";
-    mysqli_query($con,$reg);
-    echo "<h3 style='font-family:Segoe UI;'>Registration successful</h3><h4 style='font-family:Segoe UI;'>Login again!</h4>";
+elseif ($name=='' or $pass=='' or $email=='') {
+    echo "<h3 style='font-family:Segoe UI;'>Enter valid email, name, password!!</h3>";
+    // echo "alert('Enter valid email, name, password!!')";
     echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
+}
+else{
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid email format";
+        echo "<h3 style='font-family:Segoe UI;'>Invalid Email enterred!!</h3>";
+        echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
+    }
+    else{
+        $reg = "insert into profiles(name, password, email, role) values ('$name','$pass','$email','$role')";
+        mysqli_query($con,$reg);
+        echo "<h3 style='font-family:Segoe UI;'>Registration successful</h3><h4 style='font-family:Segoe UI;'>Login again!</h4>";
+        echo "<script>setTimeout(\"location.href = 'login.html';\",1500);</script>";
+    }
 }
 
 ?>

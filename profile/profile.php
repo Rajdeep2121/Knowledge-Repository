@@ -23,6 +23,8 @@ body{
     border: 1px solid lightgrey;
     transition: 0.5s ease-out;
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* height: 220px; */
 }
 #article-card:hover{
     cursor: pointer;
@@ -34,9 +36,16 @@ img{
 }
 .article-container{
     margin-bottom: 40px;
+    width: 80%;
+    margin: 0 10%;
 }
-#approvebtn, #approvebtn{
+#approvebtn,#read{
     margin: 10px;
+    width: 90px;
+}
+#disapprovebtn{
+    /* margin: 10px; */
+    width: 150px;
 }
 #editArt, #readArt{
     margin: 2px;
@@ -87,6 +96,7 @@ if($_SESSION['role']=='domain expert'){
         echo "All articles have been approved by Domain Experts!!";
     }
     else{
+        echo "<div class='article-container'>";
         while($row=mysqli_fetch_array($records)){
             $temp = $row['id'];
             $link = "../articleDisplay.php?articleID=".$temp; 
@@ -103,12 +113,14 @@ if($_SESSION['role']=='domain expert'){
             echo "</div>";
             echo "</div>";
         }
+        echo "</div>";
     }
 }
 elseif($_SESSION['role']=='contributor'){
     echo "<h2 style='text-align: center; background-color: whitesmoke; padding: 10px;'> Articles to Read <i class='fa fa-list-alt' aria-hidden='true'></i></h2><br><br>";
     $sql = "select * from articles where approved=1";
     $records = mysqli_query($con, $sql);
+    echo "<div class='article-container'>";
     while($row = mysqli_fetch_array($records)){
         $temp = $row['id'];
         $link = "../articleDisplay.php?articleID=".$temp; 
@@ -125,6 +137,7 @@ elseif($_SESSION['role']=='contributor'){
         echo "</div>";
         echo "</div>";
     }
+    echo "</div>";
 }
 
 ?>

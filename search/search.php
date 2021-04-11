@@ -22,13 +22,16 @@ body{
     src: url(../fonts/Gotham-Font/Gotham-Bold.otf);
 }
 #article-card{
-    margin: 20px;
+    /* margin: 1px; */
     text-align: center; 
+    height: 200px;
     border: 1px solid lightgrey;
     transition: 0.5s ease-out;
     margin-bottom: 20px;
     background-color: white;
-    justify-content: space-around;
+}
+.container{
+    width: 80%;
 }
 #article-card:hover{
     cursor: pointer;
@@ -87,6 +90,7 @@ if($records==''){
     echo "No Articles to show!!";
 }
 else{
+    echo "<div class='container'>";
     while($row = mysqli_fetch_array($records)){
         $temp = $row['id'];
         $link = "../articleDisplay.php?articleID=".$temp; 
@@ -100,6 +104,7 @@ else{
         echo "</div>";
         echo "</div>";
     }
+    echo "</div>";
 }
 
 ?>
