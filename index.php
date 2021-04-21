@@ -10,19 +10,23 @@
     <title>Knowledge Repository</title>
     <style>
 body{
-    font-family: GothamBold;
+    font-family: ProximaNova;
 }
 h1{
     padding: 20px;
     text-align: center;
     font-size: 70px;
     font-weight: bold;
-    font-family: GothamBold;
+    /* font-family: ProximaNova; */
 }
 
 @font-face {
     font-family: GothamBold;
     src: url(fonts/Gotham-Font/Gotham-Bold.otf);
+}
+@font-face {
+    font-family: ProximaNova;
+    src: url(fonts/ProximaNovaBold.otf);
 }
 
 .headercontainer{
@@ -74,9 +78,12 @@ button[type="submit"]:hover{
     transition: 0.5s ease-out;
     margin-bottom: 20px;
     justify-content: space-around;
+    height: 200px;
+    /* margin-right:10px; */
 }
 #article-card:hover{
     cursor: pointer;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     color: white;
     background-color: #15202b;
 }

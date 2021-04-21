@@ -12,17 +12,20 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body{
-    background: #44A08D;  
+    /* background: #44A08D;  
     background: -webkit-linear-gradient(to right, #093637, #44A08D); 
-    background: linear-gradient(to right, #093637, #44A08D); 
-    font-family: GothamBold;
+    background: linear-gradient(to right, #093637, #44A08D);  */
+    background: #ad4b4c;  
+    background: -webkit-linear-gradient(to bottom, #ad4b4c, #000000); 
+    background: linear-gradient(to bottom, #ad4b4c, #000000); 
+    font-family: ProximaNova;
 }
 p{
-    font-family: Sans-serif;
+    font-family: ProximaNova;
 }
 .box{
     margin-bottom: 30px;
-    background-color: lightgrey;
+    background-color: whitesmoke;
     border-radius: 10px;
     width: 100%;
     padding: 10px;
@@ -32,6 +35,10 @@ p{
 @font-face {
     font-family: GothamBold;
     src: url(fonts/Gotham-Font/Gotham-Bold.otf);
+}
+@font-face {
+    font-family: ProximaNova;
+    src: url(fonts/ProximaNovaBold.otf);
 }
 
 .art-name{
